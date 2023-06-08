@@ -82,10 +82,15 @@ const Example = () => {
     });
   };
 
-  const exportHtml = () => {
+  const exportHtml = (needDownload = false, callback?) => {
     emailEditorRef.current?.editor?.exportHtml((data) => {
       const { design, html } = data;
       console.log("exportHtml", html);
+
+      if (needDownload) {
+        callback(html);
+        return;
+      }
       alert("Output HTML has been logged in your developer console.");
     });
   };
@@ -133,15 +138,15 @@ const Example = () => {
     quickSave();
   };
 
-  const downloadFile = (design) => {
+  const downloadFile = (design, options) => {
     const fileName = "sample";
-    const json = JSON.stringify(design, null, 2);
+    const json = design;
     const blob = new Blob([json], { type: "application/json" });
     const href = URL.createObjectURL(blob);
 
     const link = document.createElement("a");
     link.href = href;
-    link.download = fileName + ".json";
+    link.download = fileName + `.${options.type}`;
     document.body.appendChild(link);
     link.click();
 
@@ -153,10 +158,17 @@ const Example = () => {
   const downloadHandler = async () => {
     emailEditorRef.current?.editor?.saveDesign(async (design) => {
       try {
-        downloadFile(design);
+        let designJson = JSON.stringify(design);
+        downloadFile(designJson, { type: "json" });
       } catch (error) {
         console.log("Error downloading file", error);
       }
+    });
+  };
+
+  const downloadHTMLHandler = async () => {
+    exportHtml(true, (html) => {
+      downloadFile(html, { type: "html" });
     });
   };
 
@@ -173,10 +185,17 @@ const Example = () => {
           </button>
           <button onClick={quickSaveDesign}>Quick save</button>
           <button onClick={saveDesign}>Save design</button>
-          <button onClick={exportHtml}>Export HTML</button>
+          <button
+            onClick={() => {
+              exportHtml();
+            }}
+          >
+            Export HTML
+          </button>
           <button onClick={exportFromLocalStorage}>From Localstorage</button>
           <button onClick={exportFromSample}>Export example</button>
           <button onClick={downloadHandler}>Download sample</button>
+          <button onClick={downloadHTMLHandler}>Download HTML</button>
         </div>
       </div>
 
