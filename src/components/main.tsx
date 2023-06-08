@@ -172,17 +172,27 @@ const Example = () => {
     });
   };
 
+  const exportFromJson = (event) => {
+    const file = event.target.files[0];
+    let reader = new FileReader();
+
+    reader.onload = () => {
+      const data = reader.result as any;
+      const obj = JSON.parse(data);
+      emailEditorRef.current?.editor?.loadDesign(obj);
+    };
+
+    reader.readAsText(file);
+  };
+
   return (
     <div className="main-container">
       <div className="flex justify-between w-full">
-        <div className="px-[40px] flex flex-col justify-center items-center">
-          <h1 className="m-0">Email Editor</h1>
-          <h2 className="m-0">Powered by Next JS</h2>
-        </div>
         <div className="bar">
           <button onClick={togglePreview}>
             {preview ? "Hide" : "Show"} Preview
           </button>
+
           <button onClick={quickSaveDesign}>Quick save</button>
           <button onClick={saveDesign}>Save design</button>
           <button
@@ -194,6 +204,12 @@ const Example = () => {
           </button>
           <button onClick={exportFromLocalStorage}>From Localstorage</button>
           <button onClick={exportFromSample}>Export example</button>
+          <div className="file-upload">
+            <label>
+              <input type="file" name="file" onChange={exportFromJson} />
+              <span>Export JSON</span>
+            </label>
+          </div>
           <button onClick={downloadHandler}>Download sample</button>
           <button onClick={downloadHTMLHandler}>Download HTML</button>
         </div>

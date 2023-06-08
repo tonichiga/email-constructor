@@ -53,15 +53,29 @@ body {
 
 .bar button {
   flex: 1;
-  padding: 10px;
-  margin-left: 10px;
-  font-size: 14px;
+  padding: 8px;
+  margin-left: 8px;
+  font-size: 12px;
   font-weight: bold;
   background-color: #000;
   color: #fff;
   border: 0px;
   max-width: 150px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+
+  &:active {
+    background-color: #ccc;
+    color: #000;
+  }
+
+  & input::placeholder {
+    color: red;
+  }
 }
 
 .modal_container {
@@ -159,4 +173,52 @@ body {
   display: flex;
   justify-content: center;
   gap: 16px;
+}
+
+.filename {
+  background: #fff;
+  border: 0;
+}
+
+.file-upload {
+  position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
+  overflow: hidden; /* Все что выходит за пределы - скрываем */
+  width: 150px; /* Задаем ширину кнопки выбора файла */ /* Задаем высоту кнопки выбора файла */
+  background: #000;
+  border-radius: 3px;
+  padding: 8px 4px;
+  color: #fff;
+  text-align: center;
+  margin-left: 8px;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+
+  &:active {
+    background-color: #ccc;
+    color: #000;
+  }
+}
+
+.file-upload input[type="file"] {
+  display: none; /* Обязательно скрываем настоящий Input File */
+}
+.file-upload label {
+  /* Растягиваем label на всю возможную площадь блока .file-upload */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.file-upload span {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
 }
