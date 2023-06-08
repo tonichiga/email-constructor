@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
+  "author": {
+    "name": "4i",
+    "email": "tonichiga@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
