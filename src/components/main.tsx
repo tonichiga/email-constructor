@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import EmailEditor from "./email-editor";
 import { EditorRef } from "../types/types";
-// import sample from "/sample/sample.json";
+import sample from "../assets/sample/sample.json";
 import modals, { modalAction } from "../service/modal-manager";
 
 const Example = () => {
@@ -105,7 +105,7 @@ const Example = () => {
   };
 
   const exportFromSample = () => {
-    // emailEditorRef.current?.editor?.loadDesign("/sample/sample.json");
+    emailEditorRef.current?.editor?.loadDesign(sample);
   };
 
   const togglePreview = () => {
@@ -171,12 +171,12 @@ const Example = () => {
           <button onClick={togglePreview}>
             {preview ? "Hide" : "Show"} Preview
           </button>
-          <button onClick={quickSaveDesign}>Quick Save</button>
-          <button onClick={saveDesign}>Save Design</button>
+          <button onClick={quickSaveDesign}>Quick save</button>
+          <button onClick={saveDesign}>Save design</button>
           <button onClick={exportHtml}>Export HTML</button>
-          <button onClick={exportFromLocalStorage}>From LocalStorage</button>
-          <button onClick={exportFromSample}>Export Sample</button>
-          <button onClick={downloadHandler}>Download Sample</button>
+          <button onClick={exportFromLocalStorage}>From Localstorage</button>
+          <button onClick={exportFromSample}>Export example</button>
+          <button onClick={downloadHandler}>Download sample</button>
         </div>
       </div>
 
