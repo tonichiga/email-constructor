@@ -185,7 +185,7 @@ const EmailEditor = React.forwardRef<EditorRef, EmailEditorProps>(
           display: "flex",
         }}
       >
-        <div id={editorId.current} style={{ ...style, flex: 1 }} />
+        <div id={"editor-1"} style={{ ...style, flex: 1 }} />
       </div>
     );
   }

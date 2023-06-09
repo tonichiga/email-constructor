@@ -860,6 +860,7 @@ var unlayer;
                 key: "withMessage",
                 value: function (e, t, r) {
                   var i = this.callbackId++;
+
                   (this.callbacks[i] = r),
                     this.postMessage(
                       e,
@@ -878,6 +879,7 @@ var unlayer;
                         {}
                       ),
                     });
+
                   return (
                     n(e, function (e) {
                       return "function" == typeof e;
@@ -895,6 +897,7 @@ var unlayer;
                       }
                       var a = t.callbackId++,
                         s = t.id;
+
                       (t.callbacks[a] = n),
                         (r.__unlayer_functions_map[i.join(".")] = {
                           frameId: s,
@@ -1255,6 +1258,7 @@ var unlayer;
                 value: function (e) {
                   var t,
                     r = null;
+
                   if (
                     (e.id
                       ? (r = document.getElementById(e.id))
