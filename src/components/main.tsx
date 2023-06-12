@@ -211,7 +211,7 @@ const Example = () => {
               <span>Export JSON</span>
             </label>
           </div>
-          <button onClick={downloadHandler}>Download sample</button>
+          <button onClick={downloadHandler}>Download JSON</button>
           <button onClick={downloadHTMLHandler}>Download HTML</button>
         </div>
       </div>
