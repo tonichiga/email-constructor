@@ -1,4 +1,6 @@
 const defaultScriptUrl = "/editor.6c21abbba497e113e3ed.js";
+// const defaultScriptUrl = "https://editor.unlayer.com/embed.js?2";
+
 const callbacks: Function[] = [];
 let loaded = false;
 

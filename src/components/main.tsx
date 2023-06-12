@@ -85,7 +85,7 @@ const Example = () => {
   const exportHtml = (needDownload = false, callback?) => {
     emailEditorRef.current?.editor?.exportHtml((data) => {
       const { design, html } = data;
-      console.log("exportHtml", html);
+      console.log("exportHtml>>>>>>>>>>>>", html);
 
       if (needDownload) {
         callback(html);
@@ -139,6 +139,7 @@ const Example = () => {
   };
 
   const downloadFile = (design, options) => {
+    console.log("CALL");
     const fileName = "sample";
     const json = design;
     const blob = new Blob([json], { type: "application/json" });

@@ -796,16 +796,21 @@ var unlayer;
                       ? void 0
                       : i.action)
                   ) {
+                    // var a,
+                    //   s = window.__unlayer_multipleEditors
+                    //     ? null == e || null === (n = e.data) || void 0 === n
+                    //       ? void 0
+                    //       : n.frameId
+                    //     : 1;
+                    n = window.__unlayer_multipleEditors && e.data;
                     var a,
-                      s = window.__unlayer_multipleEditors
-                        ? null == e || null === (n = e.data) || void 0 === n
-                          ? void 0
-                          : n.frameId
-                        : 1;
-                    s &&
-                      (null === (a = u[s]) ||
-                        void 0 === a ||
-                        a.receiveMessage(e));
+                      s = window.__unlayer_multipleEditors && 1;
+
+                    if (s) {
+                      a = u[s];
+
+                      a.receiveMessage(e);
+                    }
                   } else r.destroy();
               }),
               (this.id = ++window.__unlayer_lastFrameId),
@@ -860,7 +865,6 @@ var unlayer;
                 key: "withMessage",
                 value: function (e, t, r) {
                   var i = this.callbackId++;
-
                   (this.callbacks[i] = r),
                     this.postMessage(
                       e,
@@ -897,7 +901,6 @@ var unlayer;
                       }
                       var a = t.callbackId++,
                         s = t.id;
-
                       (t.callbacks[a] = n),
                         (r.__unlayer_functions_map[i.join(".")] = {
                           frameId: s,
@@ -960,6 +963,7 @@ var unlayer;
                         l)
                       ) {
                         var c = this;
+
                         l.apply(
                           null,
                           s.concat(function () {
